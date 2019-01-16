@@ -1,6 +1,6 @@
 var axios = require('axios');
 var url = 'http://dct-api-data.herokuapp.com/tickets';
-var key = '3365d6164cbf875a'
+var { api_key } = require('./api_key')
 
 var code ='DCT-5088';
 
@@ -9,7 +9,7 @@ var updateTicket ={
     //department: ''
 };
 
-axios.patch(`${url}/${code}?api_key=${key}`,updateTicket).then((response)=>{
+axios.patch(`${url}/${code}?api_key=${api_key}`,updateTicket).then((response)=>{
     var ticket = response.data;
     if(ticket.errors) {
         console.log(ticket.errors);
